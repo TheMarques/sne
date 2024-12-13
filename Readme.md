@@ -18,3 +18,12 @@ _______
 - A project is part of the course, in which students apply the learned skills and insight and further improve reporting and presentation skills.
 
 _______
+## Large Systems (LS)
+
+### Objectives
+
+- Understand the architecture and design principles behind distributed systems.
+- Comprehend various virtualization technologies and their implications in large systems, including hardware, software, and network virtualization.
+- Apply skills in configuring and managing virtual environments and perform virtual machine migrations to optimize resource utilization.
+- Use tools like Ansible, Puppet, or Chef to provision and manage infrastructure, demonstrating the practical application of Infrastructure as Code.
+- Analyze and troubleshoot common issues in distributed systems, including challenges related to consistency, fault tolerance, and system failures.
