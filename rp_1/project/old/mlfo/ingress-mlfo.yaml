@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mlfo-ingress
+  namespace: desire6g
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  labels:
+    app: mlfo
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: mlfo.desire6g.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: mlfo-service
+                port:
+                  number: 80

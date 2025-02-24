@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mlfo
+  namespace: desire6g
+  labels:
+    app: mlfo
+spec:
+  selector:
+    matchLabels:
+      app: mlfo
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mlfo
+    spec:
+      containers:
+        - name: mlfo-container
+          image: desire6g/mlfo:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 250m
+              memory: 256Mi
+          volumeMounts:
+            - name: mlfo-volume
+              mountPath: /app/config.json
+              subPath: config-mlfo.json
+      volumes:
+        - name: mlfo-volume
+          configMap:
+            name: mlfo-config
+      restartPolicy: Always

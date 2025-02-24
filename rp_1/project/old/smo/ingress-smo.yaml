@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: smo-ingress
+  namespace: desire6g
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: "/"
+  labels:
+    app: smo
+spec:
+  tls:
+    - hosts:
+        - smo.desire6g.local
+      secretName: smo-tls-secret
+  ingressClassName: nginx
+  rules:
+    - host: smo.desire6g.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: smo-service
+                port:
+                  number: 80

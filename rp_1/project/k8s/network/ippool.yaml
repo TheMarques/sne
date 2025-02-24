@@ -1,0 +1,10 @@
+apiVersion: projectcalico.org/v3
+kind: IPPool
+metadata:
+  name: default-pool
+  namespace: desire6g
+spec:
+  cidr: 10.245.0.0/16
+  vxlanMode: Always
+  natOutgoing: true
+  disabled: false

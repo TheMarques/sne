@@ -1,0 +1,46 @@
+services:
+  agent:
+    container_name: "agent"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./config-agent.json:/app/config.json
+  network-function:
+    container_name: "network-function"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./config-network-func.json:/app/config.json
+  network-function-2:
+    container_name: "network-function-2"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./config-network-func-2.json:/app/config.json
+  mlfo:
+    container_name: "mlfo"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./config-mlfo.json:/app/config.json
+  smo:
+    container_name: "smo"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8002:8002"
+    volumes:
+      - ./config-smo.json:/app/config.json

@@ -1,0 +1,7 @@
+{
+  "role": "network-function-2",
+  "host": "0.0.0.0",
+  "port": 8004,
+  "target_url": "http://network-function-2:80/process",
+  "message": {"status": "QoS violated, need reconfiguration"}
+}

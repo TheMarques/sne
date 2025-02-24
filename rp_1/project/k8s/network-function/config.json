@@ -1,0 +1,8 @@
+{
+  "role": "network-function",
+  "host": "0.0.0.0",
+  "port": 8000,
+  "target_url": "http://network-function-2.desire6g.svc.cluster.local/process",
+  "cluster": "uva",
+  "message": {"status": "QoS violated, need reconfiguration"}
+}

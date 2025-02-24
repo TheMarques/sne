@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: smo
+  namespace: desire6g
+  labels:
+    app: smo
+spec:
+  selector:
+    matchLabels:
+      app: smo
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: smo
+    spec:
+      containers:
+        - name: smo-container
+          image: desire6g/smo:latest
+          imagePullPolicy: IfNotPresent
+          resources:
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+            requests:
+              cpu: "250m"
+              memory: "256Mi"
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          volumeMounts:
+            - name: smo-volume
+              mountPath: /app/config.json
+              subPath: config-smo.json
+      volumes:
+        - name: smo-volume
+          configMap:
+            name: smo-config
+      restartPolicy: Always
